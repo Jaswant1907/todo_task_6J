@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app_task_6j/dialogue_box/add_dialogue.dart';
+import 'package:notes_app_task_6j/model/notes_model.dart';
 
 class CheckBoxWidget extends StatefulWidget {
-  const CheckBoxWidget({super.key});
+
+  final NotesModel note;
+
+  const CheckBoxWidget({super.key,required this.note});
 
   @override
   State<CheckBoxWidget> createState() => _CheckBoxWidgetState();
 }
 
 class _CheckBoxWidgetState extends State<CheckBoxWidget> {
-  bool isChecked = false;
+ // bool isChecked = false;
 
 
 
@@ -29,12 +33,15 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
    }
 
 
-    return Checkbox(value: isChecked,
+    return Checkbox(
+      value: widget.note.isDone,
       checkColor: Colors.white,
       fillColor: WidgetStateColor.resolveWith(getColor),
+
       onChanged: (bool? value) {
             setState(() {
-              isChecked = value!;
+              widget.note.isDone =  value!;
+              widget.note.save();
             });
       },);
   }

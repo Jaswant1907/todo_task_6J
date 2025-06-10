@@ -15,6 +15,12 @@ class NotesModel extends HiveObject{
   @HiveField(2)
   bool isDone;
 
+  // @HiveField(3)
+  // DateTime dateTime;
+  //
+  // @HiveField(4)
+  // int priority;
+
   NotesModel({required this.title ,required this.desc, this.isDone = false});
 
 

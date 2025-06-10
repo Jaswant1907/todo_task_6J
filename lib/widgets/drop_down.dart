@@ -5,7 +5,9 @@ const List<String> dropList = ['All','Completed','inCompleted'];
 
 
 class DropDown extends StatefulWidget {
-  const DropDown({super.key});
+
+  final Function(String) onChanged;
+  const DropDown({super.key,required this.onChanged});
 
   @override
   State<DropDown> createState() => _DropDownState();
@@ -21,14 +23,16 @@ class _DropDownState extends State<DropDown> {
           icon: Icon(Icons.keyboard_arrow_down),
           elevation: 16,
           style: TextStyle(color: Colors.purple),
-          underline: Container(height: 2,color: Colors.green,),
+          underline: Container(height: 2,color: Colors.white54,),
 
           onChanged: (String? value){
-            setState(() {
-              firstList = value!;
-            });
+            if(value != null) {
+              setState(() {
+                firstList = value!;
+              });
 
-
+              widget.onChanged(value);
+            }
           },
 
           items: dropList.map<DropdownMenuItem<String>>((String value){
@@ -37,19 +41,4 @@ class _DropDownState extends State<DropDown> {
     );
   }
 }
-
-// enum Filter {all, comleted, incompleted}
-//
-// Filter currentFilter = Filter.all;
-//
-// List<dropList> get filteredTodos {
-//
-//   switch(currentFilter){
-//
-//     case Filter.comleted :
-//       return  currentFilter.where((todo) => todo.)
-//   }
-//
-//
-// }
 

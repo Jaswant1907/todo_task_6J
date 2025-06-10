@@ -38,6 +38,8 @@ dependencies:
   path_provider:
   hive_flutter:
   flutter_slidable:
+  provider:
+
 
 dev_dependencies:
   flutter_test:
